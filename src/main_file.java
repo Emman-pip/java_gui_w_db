@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+// import java.awt.Label;
+import java.util.LinkedList;
 
 class Menu extends JMenuBar{
     JMenuBar mb;
@@ -17,7 +19,6 @@ class Menu extends JMenuBar{
         file.add(mItm1);
         file.add(mItm2);
         help.add(mItm3);
-     
     }
 }
 
@@ -25,7 +26,7 @@ class SideBar extends JPanel{
     JPanel pnl;
     SideBar(){
         JButton btn_one = new JButton("one");
-        btn_one.setSize(200, 200);
+        // btn_one.setSize(200, 200);
         JButton btn_two = new JButton("two");
         JButton btn_three = new JButton("three");
         JButton btn_four = new JButton("four");
@@ -40,14 +41,60 @@ class SideBar extends JPanel{
     }
 }
 
+class Label extends JLabel {
+    JLabel lbl;
+    Label(String name){
+        this.setText(name);
+    }
+}
+
+class Data extends JPanel {
+    JPanel pnl;
+    JScrollPane scroll;
+    Data(){
+        // super();
+        // JPanel seperate = new JPanel();
+        
+        LinkedList<String> labels = new LinkedList<String>();
+        for (int i=0; i < 50; i++){
+            labels.add(Integer.toString(i));
+        }
+        // System.out.println(labels);
+        
+        // seperate.setLayout(new BoxLayout(seperate, BoxLayout.PAGE_AXIS));
+        // scroll = new JScrollPane(pnl);
+        Object[] objArr = labels.toArray();
+        String[] strArr = new String[objArr.length];
+        for (int i = 0; i < objArr.length; i++){
+            strArr[i] = (String) objArr[i];
+        }
+        JList list = new JList(strArr);
+
+        scroll = new JScrollPane(list);
+        scroll.setPreferredSize(new Dimension(650,460));
+        // setLayout(new GridBagLayout());
+        
+        // scroll.setPreferredSize(new Dimension( 800,300));
+        // setPreferredSize(new Dimension(WIDTH, 420));
+        // setAutoscrolls(true);
+        add(scroll);
+        // add(scroll);
+        // setSize(420, 420);
+    }
+}
+
 public class main_file extends JFrame{
     JFrame frm;
     main_file(){
-        setSize(420, 420); 
-        setVisible(true);
+        // pack();
         JMenuBar menu = new Menu();
         add(BorderLayout.NORTH, menu);        
         add(BorderLayout.WEST, new SideBar());
+        add(BorderLayout.CENTER, new Data());
+        
+        setSize(820, 520); 
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setVisible(true);
 
     }
     public static void main(String[] args){
