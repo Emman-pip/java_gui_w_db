@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+
 // import java.awt.Label;
 import java.util.LinkedList;
 
@@ -48,7 +49,7 @@ class Label extends JLabel {
     }
 }
 
-class Data extends JPanel {
+class Data extends JPanel{
     JPanel pnl;
     JScrollPane scroll;
     Data(){
@@ -65,8 +66,14 @@ class Data extends JPanel {
         // scroll = new JScrollPane(pnl);
         Object[] objArr = labels.toArray();
         String[] strArr = new String[objArr.length];
-        for (int i = 0; i < objArr.length; i++){
-            strArr[i] = (String) objArr[i];
+        
+        try {
+            LinkedList<String> lol = new selectAllDB().lect();
+            for (int i = 0; i < objArr.length; i++){
+                strArr[i] = lol.get(i);
+            }
+        } catch (Exception e){
+            System.out.println(e);
         }
         JList list = new JList(strArr);
 
@@ -99,5 +106,6 @@ public class main_file extends JFrame{
     }
     public static void main(String[] args){
         new main_file();
+        // selectAll all = new selectAll();
     }
 }
