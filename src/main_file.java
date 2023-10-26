@@ -66,7 +66,7 @@ class Data extends JPanel{
         // scroll = new JScrollPane(pnl);
         
         try {
-            LinkedList<String> labels = new selectAllDB().select();
+            LinkedList<String> labels = new DB().select();
             Object[] objArr = labels.toArray();
             String[] strArr = new String[objArr.length];
             for (int i = 0; i < objArr.length; i++){
