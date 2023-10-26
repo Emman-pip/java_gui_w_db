@@ -56,28 +56,28 @@ class Data extends JPanel{
         // super();
         // JPanel seperate = new JPanel();
         
-        LinkedList<String> labels = new LinkedList<String>();
-        for (int i=0; i < 50; i++){
-            labels.add(Integer.toString(i));
-        }
+        // LinkedList<String> labels = new LinkedList<String>();
+        // for (int i=0; i < 50; i++){
+        //     labels.add(Integer.toString(i));
+        // }
         // System.out.println(labels);
         
         // seperate.setLayout(new BoxLayout(seperate, BoxLayout.PAGE_AXIS));
         // scroll = new JScrollPane(pnl);
-        Object[] objArr = labels.toArray();
-        String[] strArr = new String[objArr.length];
         
         try {
-            LinkedList<String> lol = new selectAllDB().lect();
+            LinkedList<String> labels = new selectAllDB().select();
+            Object[] objArr = labels.toArray();
+            String[] strArr = new String[objArr.length];
             for (int i = 0; i < objArr.length; i++){
-                strArr[i] = lol.get(i);
+                strArr[i] = labels.get(i);
             }
+            JList list = new JList(strArr);
+            scroll = new JScrollPane(list);
         } catch (Exception e){
             System.out.println(e);
         }
-        JList list = new JList(strArr);
-
-        scroll = new JScrollPane(list);
+        
         scroll.setPreferredSize(new Dimension(650,460));
         // setLayout(new GridBagLayout());
         
