@@ -53,18 +53,6 @@ class Data extends JPanel{
     JPanel pnl;
     JScrollPane scroll;
     Data(){
-        // super();
-        // JPanel seperate = new JPanel();
-        
-        // LinkedList<String> labels = new LinkedList<String>();
-        // for (int i=0; i < 50; i++){
-        //     labels.add(Integer.toString(i));
-        // }
-        // System.out.println(labels);
-        
-        // seperate.setLayout(new BoxLayout(seperate, BoxLayout.PAGE_AXIS));
-        // scroll = new JScrollPane(pnl);
-        
         try {
             LinkedList<String> labels = new DB().select();
             Object[] objArr = labels.toArray();
@@ -102,7 +90,6 @@ public class main_file extends JFrame{
         setSize(820, 520); 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-
     }
     public static void main(String[] args){
         new main_file();

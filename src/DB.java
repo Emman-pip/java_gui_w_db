@@ -9,6 +9,23 @@ public class DB {
     String pass = "108996eE@emman"; 
     String username = "root";
 
+    public static void update(int Id, String name,  String diagnosis, String prescription, String description) throws Exception{
+        DB db = new DB();
+        String url = db.url;
+        String username = db.username; 
+        String pass = db.pass; 
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, username, pass);
+        Statement st = con.createStatement();
+        
+        String query = String.format("UPDATE patient_data SET name = '%s', diagnosis = '%s', prescription = '%s', description = '%s' WHERE patient_id = %d", name, diagnosis, prescription, description, Id);
+
+        int rs = st.executeUpdate(query);
+        // System.out.println(query);
+        con.close();
+    }
+
     public static void del(int Id) throws Exception{
         DB db = new DB();
         String url = db.url;
@@ -61,9 +78,10 @@ public class DB {
     }
     public static void main(String[] args) throws Exception{
         // insert("someoneNew", "something", "something", "something");
-        select();
-        del(7);
-        select();
+        // select();
+        // del(7);
+        // update(6, "wrong record", "none", "null", "none");
+        // select();
 
     }
 }
