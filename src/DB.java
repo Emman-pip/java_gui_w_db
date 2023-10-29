@@ -22,7 +22,7 @@ public class DB {
                 "UPDATE patient_data SET name = '%s', diagnosis = '%s', prescription = '%s', description = '%s' WHERE patient_id = %s",
                 name, diagnosis, prescription, description, Id);
 
-        System.out.println(query);
+        // System.out.println(query);
         int rs = st.executeUpdate(query);
         con.close();
     }

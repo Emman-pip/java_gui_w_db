@@ -5,12 +5,13 @@ import java.awt.event.ActionListener;
 // import java.awt.Label;
 import java.util.LinkedList;
 
-class Menu extends JMenuBar{
+class Menu extends JMenuBar {
     JMenuBar mb;
-    Menu(){
+
+    Menu() {
         JMenu file = new JMenu("File");
         JMenu help = new JMenu("Help");
-        
+
         add(file);
         add(help);
 
@@ -24,29 +25,36 @@ class Menu extends JMenuBar{
     }
 }
 
-class SideBar extends JPanel{
+class SideBar extends JPanel {
     JPanel pnl;
-    SideBar(){
+
+    SideBar() {
         JButton btn_one = new JButton("Add record");
         btn_one.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 new insert();
             }
         });
         // btn_one.setSize(200, 200);
         JButton btn_two = new JButton("Delete record");
         btn_two.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 new delete();
             }
         });
         JButton btn_three = new JButton("Update record");
+        btn_three.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new update();
+            }
+        });
+
         JButton btn_four = new JButton("refresh");
         // JButton btn_five = new JButton("");
-        setLayout(new GridLayout(4,1,1,1));
-        
+        setLayout(new GridLayout(4, 1, 1, 1));
+
         // btn_one.addActionListener(e -> System.out.println("hjaha"));
-        
+
         add(btn_one);
         add(btn_two);
         add(btn_three);
@@ -56,31 +64,33 @@ class SideBar extends JPanel{
 
 class Label extends JLabel {
     JLabel lbl;
-    Label(String name){
+
+    Label(String name) {
         this.setText(name);
     }
 }
 
-class Data extends JPanel{
+class Data extends JPanel {
     JPanel pnl;
     JScrollPane scroll;
-    Data(){
+
+    Data() {
         try {
             LinkedList<String> labels = new DB().select();
             Object[] objArr = labels.toArray();
             String[] strArr = new String[objArr.length];
-            for (int i = 0; i < objArr.length; i++){
+            for (int i = 0; i < objArr.length; i++) {
                 strArr[i] = labels.get(i);
             }
             JList list = new JList(strArr);
             scroll = new JScrollPane(list);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
-        
-        scroll.setPreferredSize(new Dimension(650,460));
+
+        scroll.setPreferredSize(new Dimension(650, 460));
         // setLayout(new GridBagLayout());
-        
+
         // scroll.setPreferredSize(new Dimension( 800,300));
         // setPreferredSize(new Dimension(WIDTH, 420));
         // setAutoscrolls(true);
@@ -91,20 +101,22 @@ class Data extends JPanel{
 }
 // TODO: prompts (Add record, delete, update) linked to buttons
 
-public class main_file extends JFrame{
+public class main_file extends JFrame {
     JFrame frm;
-    main_file(){
+
+    main_file() {
         // pack();
         JMenuBar menu = new Menu();
-        add(BorderLayout.NORTH, menu);        
+        add(BorderLayout.NORTH, menu);
         add(BorderLayout.WEST, new SideBar());
         add(BorderLayout.CENTER, new Data());
-        
-        setSize(820, 520); 
+
+        setSize(820, 520);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         new main_file();
         // selectAll all = new selectAll();
     }
