@@ -2,8 +2,11 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class delete extends JFrame{
+   DB data;
    JFrame frm;
    delete(){
         JPanel pnl = new JPanel();
@@ -17,7 +20,17 @@ public class delete extends JFrame{
         JButton btn_del = new JButton("Delete");
         JButton btn_close = new JButton("Close");
 
-
+        btn_del.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                try {
+                    data.del(Integer.parseInt(txt_IDNum.getText()));
+                    data.select();
+                }
+                catch (Exception err){
+                    System.out.println(err);
+                }
+            }
+        });
         // this.add(lbl_deleteID);
         // this.add(txt_IDNum);
         this.setTitle("delete records");
@@ -41,7 +54,7 @@ public class delete extends JFrame{
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
     }
-    public static void main(String[] args){
+    public static void main(String[] args) throws Exception{
         new delete();
     }
 }
