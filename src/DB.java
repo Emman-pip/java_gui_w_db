@@ -76,12 +76,5 @@ public class DB {
         con.close();
         return data;
     }
-    public static void main(String[] args) throws Exception{
-        // insert("someoneNew", "something", "something", "something");
-        // select();
-        // del(7);
-        // update(6, "wrong record", "none", "null", "none");
-        // select();
-
-    }
+    public static void main(String[] args) throws Exception{}
 }
