@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class delete extends JFrame {
     DB data;
-    JFrame frm;
+    JFrame frm = this;
 
     delete() {
         JPanel pnl = new JPanel();
@@ -34,7 +34,8 @@ public class delete extends JFrame {
 
         btn_close.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.exit(ABORT);
+                frm.dispose();
+                ;
             }
         });
         // this.add(lbl_deleteID);
