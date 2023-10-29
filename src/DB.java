@@ -7,7 +7,7 @@ public class DB {
     String pass = "108996eE@emman";
     String username = "root";
 
-    public static void update(int Id, String name, String diagnosis, String prescription, String description)
+    public static void update(String Id, String name, String diagnosis, String prescription, String description)
             throws Exception {
         DB db = new DB();
         String url = db.url;
@@ -19,11 +19,11 @@ public class DB {
         Statement st = con.createStatement();
 
         String query = String.format(
-                "UPDATE patient_data SET name = '%s', diagnosis = '%s', prescription = '%s', description = '%s' WHERE patient_id = %d",
+                "UPDATE patient_data SET name = '%s', diagnosis = '%s', prescription = '%s', description = '%s' WHERE patient_id = %s",
                 name, diagnosis, prescription, description, Id);
 
+        System.out.println(query);
         int rs = st.executeUpdate(query);
-        // System.out.println(query);
         con.close();
     }
 

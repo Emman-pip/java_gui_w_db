@@ -38,6 +38,18 @@ public class update extends JFrame {
 
         JButton btn_update = new JButton("update");
 
+        btn_update.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    new DB().update(txt_ID.getText(), txt_name.getText(), txt_diagnosis.getText(),
+                            txt_prescription.getText(), txt_description.getText());
+
+                } catch (Exception err) {
+                    System.out.println(err);
+                }
+            }
+        });
+
         this.add(lbl_ID);
         this.add(txt_ID);
         this.add(lbl_name);
