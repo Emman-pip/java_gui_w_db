@@ -35,12 +35,17 @@ class SideBar extends JPanel{
         });
         // btn_one.setSize(200, 200);
         JButton btn_two = new JButton("Delete record");
+        btn_two.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                new delete();
+            }
+        });
         JButton btn_three = new JButton("Update record");
         JButton btn_four = new JButton("refresh");
         // JButton btn_five = new JButton("");
         setLayout(new GridLayout(4,1,1,1));
         
-        btn_one.addActionListener(e -> System.out.println("hjaha"));
+        // btn_one.addActionListener(e -> System.out.println("hjaha"));
         
         add(btn_one);
         add(btn_two);
