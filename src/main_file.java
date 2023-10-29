@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 // import java.awt.Label;
 import java.util.LinkedList;
 
@@ -27,6 +28,11 @@ class SideBar extends JPanel{
     JPanel pnl;
     SideBar(){
         JButton btn_one = new JButton("Add record");
+        btn_one.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                new insert();
+            }
+        });
         // btn_one.setSize(200, 200);
         JButton btn_two = new JButton("Delete record");
         JButton btn_three = new JButton("Update record");

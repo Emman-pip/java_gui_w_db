@@ -49,9 +49,8 @@ class widgets extends JPanel{
                     System.out.println(err);
     
                 }            
-
             }});
-                 
+
 
         
         // JButton btn_close = new CloseBtn();
