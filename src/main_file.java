@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-// import java.awt.Label;
 import java.util.LinkedList;
 
 class Menu extends JMenuBar {
@@ -12,8 +11,8 @@ class Menu extends JMenuBar {
         JMenu file = new JMenu("File");
         JMenu help = new JMenu("Help");
 
-        add(file);
-        add(help);
+        this.add(file);
+        this.add(help);
 
         JMenuItem mItm1 = new JMenuItem("Chuchu");
         JMenuItem mItm2 = new JMenuItem("Help");
@@ -35,7 +34,6 @@ class SideBar extends JPanel {
                 new insert();
             }
         });
-        // btn_one.setSize(200, 200);
         JButton btn_two = new JButton("Delete record");
         btn_two.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -50,15 +48,11 @@ class SideBar extends JPanel {
         });
 
         JButton btn_four = new JButton("refresh");
-        // JButton btn_five = new JButton("");
-        setLayout(new GridLayout(4, 1, 1, 1));
-
-        // btn_one.addActionListener(e -> System.out.println("hjaha"));
-
-        add(btn_one);
-        add(btn_two);
-        add(btn_three);
-        add(btn_four);
+        this.setLayout(new GridLayout(4, 1, 1, 1));
+        this.add(btn_one);
+        this.add(btn_two);
+        this.add(btn_three);
+        this.add(btn_four);
     }
 }
 
@@ -89,35 +83,25 @@ class Data extends JPanel {
         }
 
         scroll.setPreferredSize(new Dimension(650, 460));
-        // setLayout(new GridBagLayout());
-
-        // scroll.setPreferredSize(new Dimension( 800,300));
-        // setPreferredSize(new Dimension(WIDTH, 420));
-        // setAutoscrolls(true);
-        add(scroll);
-        // add(scroll);
-        // setSize(420, 420);
+        this.add(scroll);
     }
 }
-// TODO: prompts (Add record, delete, update) linked to buttons
 
 public class main_file extends JFrame {
     JFrame frm;
 
     main_file() {
-        // pack();
         JMenuBar menu = new Menu();
-        add(BorderLayout.NORTH, menu);
-        add(BorderLayout.WEST, new SideBar());
-        add(BorderLayout.CENTER, new Data());
+        this.add(BorderLayout.NORTH, menu);
+        this.add(BorderLayout.WEST, new SideBar());
+        this.add(BorderLayout.CENTER, new Data());
 
-        setSize(820, 520);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setVisible(true);
+        this.setSize(820, 520);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
 
     public static void main(String[] args) {
         new main_file();
-        // selectAll all = new selectAll();
     }
 }
