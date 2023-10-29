@@ -31,6 +31,12 @@ public class delete extends JFrame{
                 }
             }
         });
+
+        btn_close.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                System.exit(ABORT);
+            }
+        });
         // this.add(lbl_deleteID);
         // this.add(txt_IDNum);
         this.setTitle("delete records");
