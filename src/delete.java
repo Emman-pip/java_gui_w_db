@@ -5,10 +5,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class delete extends JFrame{
-   DB data;
-   JFrame frm;
-   delete(){
+public class delete extends JFrame {
+    DB data;
+    JFrame frm;
+
+    delete() {
         JPanel pnl = new JPanel();
         JPanel pnl_buttons = new JPanel();
 
@@ -21,26 +22,25 @@ public class delete extends JFrame{
         JButton btn_close = new JButton("Close");
 
         btn_del.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 try {
                     data.del(Integer.parseInt(txt_IDNum.getText()));
                     data.select();
-                }
-                catch (Exception err){
+                } catch (Exception err) {
                     System.out.println(err);
                 }
             }
         });
 
         btn_close.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 System.exit(ABORT);
             }
         });
         // this.add(lbl_deleteID);
         // this.add(txt_IDNum);
         this.setTitle("delete records");
-        this.setSize(350,150);
+        this.setSize(350, 150);
         // this.pack();
         this.setLayout(new BorderLayout());
         pnl_buttons.setLayout(new BorderLayout());
@@ -48,7 +48,7 @@ public class delete extends JFrame{
         this.getContentPane().add(pnl, BorderLayout.CENTER);
         this.getContentPane().add(pnl_buttons, BorderLayout.SOUTH);
 
-        pnl.setBorder(new EmptyBorder(10,10,10,10));
+        pnl.setBorder(new EmptyBorder(10, 10, 10, 10));
         // pnl.setLayout(new BorderLayout());
         // pnl.add(lbl_deleteID, BorderLayout.WEST);
         // pnl.add(txt_IDNum, BorderLayout.CENTER);
@@ -57,10 +57,11 @@ public class delete extends JFrame{
         pnl_buttons.add(btn_del, BorderLayout.CENTER);
         pnl_buttons.add(btn_close, BorderLayout.SOUTH);
 
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        // this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
     }
-    public static void main(String[] args) throws Exception{
+
+    public static void main(String[] args) throws Exception {
         new delete();
     }
 }

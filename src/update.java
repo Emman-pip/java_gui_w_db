@@ -65,7 +65,7 @@ public class update extends JFrame {
 
         this.setLayout(new GridLayout(6, 2));
 
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        // this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("update records");
         this.setSize(400, 300);
         this.setVisible(true);
