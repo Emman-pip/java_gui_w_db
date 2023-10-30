@@ -27,7 +27,7 @@ class Menu extends JMenuBar {
 class SideBar extends JPanel {
     JPanel pnl;
 
-    SideBar(JFrame frm, JPanel data) {
+    SideBar(JPanel data) {
         JButton btn_one = new JButton("Add record");
         btn_one.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -49,18 +49,9 @@ class SideBar extends JPanel {
 
         JButton btn_four = new JButton("refresh");
         btn_four.addActionListener(new ActionListener() {
-            JPanel newdata;
 
             public void actionPerformed(ActionEvent e) {
-                newdata = new Data();
-
-                if (data.getComponents().length != 0) {
-                    data.remove(data.getComponents().length - 1);
-                    data.revalidate();
-                    data.add(newdata);
-                    validate();
-                    repaint();
-                }
+                new refresh(data);
             }
         });
         this.setLayout(new GridLayout(4, 1, 1, 1));
@@ -68,6 +59,22 @@ class SideBar extends JPanel {
         this.add(btn_two);
         this.add(btn_three);
         this.add(btn_four);
+    }
+}
+
+class refresh {
+    JPanel newdata;
+
+    refresh(JPanel data) {
+        newdata = new Data();
+
+        if (data.getComponents().length != 0) {
+            data.remove(data.getComponents().length - 1);
+            data.revalidate();
+            data.add(newdata);
+            data.validate();
+            data.repaint();
+        }
     }
 }
 
@@ -114,7 +121,7 @@ public class main_file extends JFrame {
         this.add(BorderLayout.NORTH, menu);
         JPanel data = new Data();
         this.add(BorderLayout.CENTER, data);
-        this.add(BorderLayout.WEST, new SideBar(this, data));
+        this.add(BorderLayout.WEST, new SideBar(data));
         this.setSize(1020, 480);
         // this.pack();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
