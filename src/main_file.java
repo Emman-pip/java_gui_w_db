@@ -27,7 +27,7 @@ class Menu extends JMenuBar {
 class SideBar extends JPanel {
     JPanel pnl;
 
-    SideBar() {
+    SideBar(JFrame frm) {
         JButton btn_one = new JButton("Add record");
         btn_one.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -51,7 +51,7 @@ class SideBar extends JPanel {
         // TODO: ADD FUNCTIONALITY TO THE REFRESH BUTTON
         btn_four.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new Data();
+                new refresh(frm);
             }
         });
         this.setLayout(new GridLayout(4, 1, 1, 1));
@@ -59,6 +59,13 @@ class SideBar extends JPanel {
         this.add(btn_two);
         this.add(btn_three);
         this.add(btn_four);
+    }
+}
+
+class refresh {
+    refresh(JFrame frm) {
+        frm.dispose();
+        new main_file();
     }
 }
 
@@ -80,7 +87,7 @@ class Data extends JPanel {
             Object[] objArr = labels.toArray();
             String[][] strArr = Arrays.copyOf(objArr, objArr.length, String[][].class);
 
-            String[] columnNames = { "ID", "Namer", "Diagnosis", "Prescription", "Description" };
+            String[] columnNames = { "ID", "Name", "Diagnosis", "Prescription", "Description" };
             tbl = new JTable(strArr, columnNames);
             // tbl.setBounds(30, 40, 700, 300);
             // this.setLayout(null);
@@ -103,7 +110,7 @@ public class main_file extends JFrame {
         JMenuBar menu = new Menu();
         this.setLayout(new BorderLayout());
         this.add(BorderLayout.NORTH, menu);
-        this.add(BorderLayout.WEST, new SideBar());
+        this.add(BorderLayout.WEST, new SideBar(this));
         this.add(BorderLayout.CENTER, new Data());
         this.setSize(1020, 480);
         // this.pack();
