@@ -1,8 +1,15 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
+
+class selectedColors {
+    Color grayish = new Color(58, 58, 58);
+    Color greenish = new Color(0, 200, 150);
+}
 
 class Menu extends JMenuBar {
     JMenuBar mb;
@@ -54,10 +61,37 @@ class SideBar extends JPanel {
                 new refresh(data);
             }
         });
-        this.setLayout(new GridLayout(4, 1, 1, 1));
+        btn_one.setBackground(new selectedColors().greenish);
+        btn_two.setBackground(new selectedColors().greenish);
+        btn_three.setBackground(new selectedColors().greenish);
+        btn_four.setBackground(new selectedColors().greenish);
+
+        // Dimension minSize = new Dimension(2, 50);
+        // Dimension maxSize = new Dimension(Short.MAX_VALUE, 100);
+
+        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        btn_one.setMaximumSize(new Dimension(Integer.MAX_VALUE, btn_one.getMinimumSize().height));
+        btn_two.setMaximumSize(new Dimension(Integer.MAX_VALUE, btn_one.getMinimumSize().height));
+        btn_three.setMaximumSize(new Dimension(Integer.MAX_VALUE, btn_one.getMinimumSize().height));
+        btn_four.setMaximumSize(new Dimension(Integer.MAX_VALUE, btn_one.getMinimumSize().height));
+
+        btn_one.setAlignmentX(CENTER_ALIGNMENT);
+        btn_two.setAlignmentX(CENTER_ALIGNMENT);
+        btn_three.setAlignmentX(CENTER_ALIGNMENT);
+        btn_four.setAlignmentX(CENTER_ALIGNMENT);
+
+        Dimension prefSize = new Dimension(2, 10);
+        this.setBorder(new EmptyBorder(10, 10, 10, 10));
+        this.setBackground(new selectedColors().grayish);
+
         this.add(btn_one);
+        this.add(new Box.Filler(prefSize, prefSize, prefSize));
         this.add(btn_two);
+        this.add(new Box.Filler(prefSize, prefSize, prefSize));
+
         this.add(btn_three);
+        this.add(new Box.Filler(prefSize, prefSize, prefSize));
+
         this.add(btn_four);
     }
 }
