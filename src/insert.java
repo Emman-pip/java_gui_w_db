@@ -13,7 +13,7 @@ class widgets extends JPanel {
     DB database = new DB();
     JButton btn_close;
 
-    public widgets() {
+    public widgets(JPanel dataGrid) {
         JPanel pnl_entries = new JPanel();
         JLabel lbl_name = new JLabel("Name: ");
         txt_name = new JTextField(10);
@@ -49,6 +49,7 @@ class widgets extends JPanel {
                     data.insert(txt_name.getText(), txt_diagnosis.getText(), txt_prescription.getText(),
                             txt_description.getText());
                     System.out.println("working!");
+                    new refresh(dataGrid);
                 } catch (Exception err) {
                     System.out.println(err);
 
@@ -80,11 +81,11 @@ class widgets extends JPanel {
 public class insert extends JFrame {
     JFrame frm = this;
 
-    insert() {
+    insert(JPanel dataGrid) {
         this.setTitle("add records");
         ;
         this.setSize(300, 300);
-        widgets items = new widgets();
+        widgets items = new widgets(dataGrid);
         items.btn_close.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frm.dispose();
@@ -98,6 +99,6 @@ public class insert extends JFrame {
     }
 
     public static void main(String[] args) {
-        new insert();
+        new insert(null);
     }
 }

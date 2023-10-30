@@ -9,7 +9,7 @@ public class delete extends JFrame {
     DB data;
     JFrame frm = this;
 
-    delete() {
+    delete(JPanel dataGrid) {
         JPanel pnl = new JPanel();
         JPanel pnl_buttons = new JPanel();
 
@@ -26,6 +26,7 @@ public class delete extends JFrame {
                 try {
                     data.del(Integer.parseInt(txt_IDNum.getText()));
                     data.select();
+                    new refresh(dataGrid);
                 } catch (Exception err) {
                     System.out.println(err);
                 }
@@ -63,6 +64,6 @@ public class delete extends JFrame {
     }
 
     public static void main(String[] args) throws Exception {
-        new delete();
+        new delete(null);
     }
 }

@@ -31,19 +31,19 @@ class SideBar extends JPanel {
         JButton btn_one = new JButton("Add record");
         btn_one.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new insert();
+                new insert(data);
             }
         });
         JButton btn_two = new JButton("Delete record");
         btn_two.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new delete();
+                new delete(data);
             }
         });
         JButton btn_three = new JButton("Update record");
         btn_three.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new update();
+                new update(data);
             }
         });
 
@@ -114,12 +114,13 @@ class Data extends JPanel {
 
 public class main_file extends JFrame {
     JFrame frm;
+    JPanel data;
 
     main_file() {
         JMenuBar menu = new Menu();
         this.setLayout(new BorderLayout());
         this.add(BorderLayout.NORTH, menu);
-        JPanel data = new Data();
+        data = new Data();
         this.add(BorderLayout.CENTER, data);
         this.add(BorderLayout.WEST, new SideBar(data));
         this.setSize(1020, 480);

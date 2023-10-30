@@ -7,7 +7,7 @@ import java.util.LinkedList;
 public class update extends JFrame {
     JFrame frm;
 
-    update() {
+    update(JPanel dataGrid) {
         JLabel lbl_ID = new JLabel("ID:", JLabel.CENTER);
         JTextField txt_ID = new JTextField();
         JLabel lbl_name = new JLabel("name:", JLabel.CENTER);
@@ -43,7 +43,7 @@ public class update extends JFrame {
                 try {
                     new DB().update(txt_ID.getText(), txt_name.getText(), txt_diagnosis.getText(),
                             txt_prescription.getText(), txt_description.getText());
-
+                    new refresh(dataGrid);
                 } catch (Exception err) {
                     System.out.println(err);
                 }
@@ -72,6 +72,6 @@ public class update extends JFrame {
     }
 
     public static void main(String[] args) {
-        new update();
+        new update(null);
     }
 }
