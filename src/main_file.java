@@ -48,6 +48,12 @@ class SideBar extends JPanel {
         });
 
         JButton btn_four = new JButton("refresh");
+        // TODO: ADD FUNCTIONALITY TO THE REFRESH BUTTON
+        btn_four.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new Data();
+            }
+        });
         this.setLayout(new GridLayout(4, 1, 1, 1));
         this.add(btn_one);
         this.add(btn_two);

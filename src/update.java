@@ -9,15 +9,15 @@ public class update extends JFrame {
 
     update() {
         JLabel lbl_ID = new JLabel("ID:", JLabel.CENTER);
-        JTextArea txt_ID = new JTextArea();
+        JTextField txt_ID = new JTextField();
         JLabel lbl_name = new JLabel("name:", JLabel.CENTER);
-        JTextArea txt_name = new JTextArea();
+        JTextField txt_name = new JTextField();
         JLabel lbl_diagnosis = new JLabel("diagnosis:", JLabel.CENTER);
-        JTextArea txt_diagnosis = new JTextArea();
+        JTextField txt_diagnosis = new JTextField();
         JLabel lbl_prescription = new JLabel("prescription:", JLabel.CENTER);
-        JTextArea txt_prescription = new JTextArea();
+        JTextField txt_prescription = new JTextField();
         JLabel lbl_description = new JLabel("description:", JLabel.CENTER);
-        JTextArea txt_description = new JTextArea();
+        JTextField txt_description = new JTextField();
         JButton btn_show = new JButton("Check ID");
 
         btn_show.addActionListener(new ActionListener() {

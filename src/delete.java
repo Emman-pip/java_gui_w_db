@@ -14,7 +14,7 @@ public class delete extends JFrame {
         JPanel pnl_buttons = new JPanel();
 
         JLabel lbl_deleteID = new JLabel("Delete record with ID#:");
-        JTextArea txt_IDNum = new JTextArea();
+        JTextField txt_IDNum = new JTextField();
         txt_IDNum.setColumns(20);
         // txt_IDNum.setSize(10,10);
 
