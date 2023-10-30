@@ -8,6 +8,8 @@ import java.util.*;
 
 class selectedColors {
     Color grayish = new Color(58, 58, 58);
+    Color grayish2 = new Color(210, 210, 210);
+
     Color greenish = new Color(0, 200, 150);
 }
 
@@ -139,10 +141,16 @@ class Data extends JPanel {
             scroll.setViewportView(tbl);
             scroll.setPreferredSize(new Dimension(800, 400));
             // scroll.setSize(400, 300);
+            tbl.setBackground(new selectedColors().grayish2);
+            // tbl.setForeground(Color.WHITE);
+            // scroll.setBackground(new selectedColors().grayish);
+            // scroll.getViewport().getView().setBackground(new selectedColors().grayish);
+
             this.add(scroll);
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
         }
+        this.setBackground(new selectedColors().grayish);
     }
 }
 
