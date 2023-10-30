@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.LinkedList;
+import java.util.*;
 
 class Menu extends JMenuBar {
     JMenuBar mb;
@@ -72,24 +72,27 @@ class Label extends JLabel {
 
 class Data extends JPanel {
     JPanel pnl;
-    JScrollPane scroll;
+    JTable tbl;
 
     Data() {
         try {
-            LinkedList<String> labels = new DB().select();
+            LinkedList<String[]> labels = new DB().select();
             Object[] objArr = labels.toArray();
-            String[] strArr = new String[objArr.length];
-            for (int i = 0; i < objArr.length; i++) {
-                strArr[i] = labels.get(i);
-            }
-            JList list = new JList(strArr);
-            scroll = new JScrollPane(list);
+            String[][] strArr = Arrays.copyOf(objArr, objArr.length, String[][].class);
+
+            String[] columnNames = { "ID", "Namer", "Diagnosis", "Prescription", "Description" };
+            tbl = new JTable(strArr, columnNames);
+            // tbl.setBounds(30, 40, 700, 300);
+            // this.setLayout(null);
+            this.add(tbl);
+            JScrollPane scroll = new JScrollPane(tbl);
+            scroll.setViewportView(tbl);
+            scroll.setPreferredSize(new Dimension(800, 400));
+            // scroll.setSize(400, 300);
+            this.add(scroll);
         } catch (Exception e) {
             System.out.println(e);
         }
-
-        scroll.setPreferredSize(new Dimension(650, 460));
-        this.add(scroll);
     }
 }
 
@@ -98,11 +101,12 @@ public class main_file extends JFrame {
 
     main_file() {
         JMenuBar menu = new Menu();
+        this.setLayout(new BorderLayout());
         this.add(BorderLayout.NORTH, menu);
         this.add(BorderLayout.WEST, new SideBar());
         this.add(BorderLayout.CENTER, new Data());
-
-        this.setSize(820, 520);
+        this.setSize(1020, 480);
+        // this.pack();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
     }

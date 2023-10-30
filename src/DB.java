@@ -61,7 +61,7 @@ public class DB {
         con.close();
     }
 
-    public static LinkedList<String> select() throws Exception {
+    public static LinkedList<String[]> select() throws Exception {
         DB db = new DB();
         String url = db.url;
         String username = db.username;
@@ -73,10 +73,11 @@ public class DB {
 
         String query = "SELECT * FROM patient_data";
         ResultSet rs = st.executeQuery(query);
-        LinkedList<String> data = new LinkedList<String>();
+        LinkedList<String[]> data = new LinkedList<String[]>();
         while (rs.next()) {
-            data.add(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4) + " "
-                    + rs.getString(5));
+            String[] list = { Integer.toString(rs.getInt(1)), rs.getString(2), rs.getString(3), rs.getString(4),
+                    rs.getString(5) };
+            data.add(list);
         }
         System.out.println(data);
         con.close();
