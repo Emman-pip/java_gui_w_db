@@ -27,7 +27,7 @@ class Menu extends JMenuBar {
 class SideBar extends JPanel {
     JPanel pnl;
 
-    SideBar(JFrame frm) {
+    SideBar(JFrame frm, JPanel data) {
         JButton btn_one = new JButton("Add record");
         btn_one.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -48,10 +48,19 @@ class SideBar extends JPanel {
         });
 
         JButton btn_four = new JButton("refresh");
-        // TODO: ADD FUNCTIONALITY TO THE REFRESH BUTTON
         btn_four.addActionListener(new ActionListener() {
+            JPanel newdata;
+
             public void actionPerformed(ActionEvent e) {
-                new refresh(frm);
+                newdata = new Data();
+
+                if (data.getComponents().length != 0) {
+                    data.remove(data.getComponents().length - 1);
+                    data.revalidate();
+                    data.add(newdata);
+                    validate();
+                    repaint();
+                }
             }
         });
         this.setLayout(new GridLayout(4, 1, 1, 1));
@@ -59,13 +68,6 @@ class SideBar extends JPanel {
         this.add(btn_two);
         this.add(btn_three);
         this.add(btn_four);
-    }
-}
-
-class refresh {
-    refresh(JFrame frm) {
-        frm.dispose();
-        new main_file();
     }
 }
 
@@ -98,7 +100,7 @@ class Data extends JPanel {
             // scroll.setSize(400, 300);
             this.add(scroll);
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("ERROR: " + e);
         }
     }
 }
@@ -110,8 +112,9 @@ public class main_file extends JFrame {
         JMenuBar menu = new Menu();
         this.setLayout(new BorderLayout());
         this.add(BorderLayout.NORTH, menu);
-        this.add(BorderLayout.WEST, new SideBar(this));
-        this.add(BorderLayout.CENTER, new Data());
+        JPanel data = new Data();
+        this.add(BorderLayout.CENTER, data);
+        this.add(BorderLayout.WEST, new SideBar(this, data));
         this.setSize(1020, 480);
         // this.pack();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
