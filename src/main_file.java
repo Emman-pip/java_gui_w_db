@@ -42,7 +42,7 @@ class SideBar extends JPanel {
     Image updateImage;
     Image refreshImage;
 
-    SideBar(JPanel data) {
+    SideBar(JPanel data, JFrame frm) {
 
         JButton btn_one = new JButton();
         JButton btn_two = new JButton();
@@ -69,24 +69,25 @@ class SideBar extends JPanel {
         }
         btn_one.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new insert(data);
+                frm.add(new insert(data), BorderLayout.EAST);
             }
         });
         btn_two.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new delete(data);
+                frm.add(new delete(data), BorderLayout.EAST);
+
             }
         });
         btn_three.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new update(data);
+                frm.add(new update(data), BorderLayout.EAST);
             }
         });
 
         btn_four.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                new refresh(data);
+                frm.add(new refresh(data), BorderLayout.EAST);
             }
         });
 
@@ -202,7 +203,7 @@ public class main_file extends JFrame {
         this.add(BorderLayout.NORTH, menu);
         data = new Data();
         this.add(BorderLayout.CENTER, data);
-        this.add(BorderLayout.WEST, new SideBar(data));
+        this.add(BorderLayout.WEST, new SideBar(data, this));
         this.setSize(1020, 480);
         this.setTitle("Medical DB");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);

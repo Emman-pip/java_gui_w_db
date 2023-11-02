@@ -89,10 +89,11 @@ class widgets extends JPanel {
     }
 }
 
-public class insert extends JFrame {
-    JFrame frm = this;
+public class insert extends JInternalFrame {
+    JInternalFrame frm = this;
 
     insert(JPanel dataGrid) {
+        this.setClosable(true);
         this.setTitle("add records");
         ;
         this.setSize(300, 300);

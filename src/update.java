@@ -6,11 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
 
-public class update extends JFrame {
+public class update extends JInternalFrame {
     JFrame frm;
     JPanel pnl;
 
     update(JPanel dataGrid) {
+        this.setClosable(true);
         pnl = new JPanel();
         this.setBackground(new selectedColors().grayish);
         JLabel lbl_ID = new JLabel("ID:", JLabel.CENTER);

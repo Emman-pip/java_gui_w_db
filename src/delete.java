@@ -5,11 +5,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class delete extends JFrame {
+public class delete extends JInternalFrame {
     DB data;
-    JFrame frm = this;
+    JInternalFrame frm = this;
 
     delete(JPanel dataGrid) {
+        this.setClosable(true);
         JPanel pnl = new JPanel();
         pnl.setBackground(new selectedColors().grayish);
         JPanel pnl_buttons = new JPanel();
