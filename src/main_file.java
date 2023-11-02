@@ -202,7 +202,8 @@ class tabbedPane extends JTabbedPane {
         this.add("Delete Records", del);
         update u = new update(data);
         this.add("Update", u);
-
+        this.setBackground(new selectedColors().grayish);
+        this.setForeground(Color.WHITE);
     }
 }
 
