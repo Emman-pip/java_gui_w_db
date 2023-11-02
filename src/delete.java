@@ -5,21 +5,25 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class delete extends JFrame {
+public class delete extends JPanel {
     DB data;
-    JFrame frm = this;
+    JPanel frm = this;
 
     delete(JPanel dataGrid) {
         JPanel pnl = new JPanel();
+        pnl.setBackground(new selectedColors().grayish);
         JPanel pnl_buttons = new JPanel();
 
         JLabel lbl_deleteID = new JLabel("Delete record with ID#:");
+        lbl_deleteID.setForeground(Color.WHITE);
         JTextField txt_IDNum = new JTextField();
         txt_IDNum.setColumns(20);
         // txt_IDNum.setSize(10,10);
 
         JButton btn_del = new JButton("Delete");
+        btn_del.setBackground(new selectedColors().greenish);
         JButton btn_close = new JButton("Close");
+        btn_close.setBackground(new selectedColors().greenish);
 
         btn_del.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -32,23 +36,11 @@ public class delete extends JFrame {
                 }
             }
         });
-
-        btn_close.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                frm.dispose();
-                ;
-            }
-        });
-        // this.add(lbl_deleteID);
-        // this.add(txt_IDNum);
-        this.setTitle("delete records");
-        this.setSize(350, 150);
+        // this.setSize(350, 150);
         // this.pack();
         this.setLayout(new BorderLayout());
         pnl_buttons.setLayout(new BorderLayout());
-
-        this.getContentPane().add(pnl, BorderLayout.CENTER);
-        this.getContentPane().add(pnl_buttons, BorderLayout.SOUTH);
+        // pnl.setLayout(new Borde);
 
         pnl.setBorder(new EmptyBorder(10, 10, 10, 10));
         // pnl.setLayout(new BorderLayout());
@@ -56,8 +48,10 @@ public class delete extends JFrame {
         // pnl.add(txt_IDNum, BorderLayout.CENTER);
         pnl.add(lbl_deleteID);
         pnl.add(txt_IDNum);
+        pnl.add(pnl_buttons);
+        this.add(pnl);
         pnl_buttons.add(btn_del, BorderLayout.CENTER);
-        pnl_buttons.add(btn_close, BorderLayout.SOUTH);
+        // pnl_buttons.add(btn_close, BorderLayout.SOUTH);
 
         // this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
