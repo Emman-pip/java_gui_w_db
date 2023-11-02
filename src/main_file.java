@@ -193,7 +193,8 @@ class Data extends JPanel {
             tbl.setFillsViewportHeight(true);
             // scroll.setSize(400, 300);
             tbl.setBackground(new selectedColors().grayish2);
-            this.add(scroll);
+            this.setLayout(new BorderLayout());
+            this.add(scroll, BorderLayout.CENTER);
 
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
@@ -216,6 +217,8 @@ public class main_file extends JFrame {
         this.setSize(1020, 480);
         this.setTitle("Medical DB");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        // GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0].setFullScreenWindow(null);
+        ;
         this.setVisible(true);
     }
 
