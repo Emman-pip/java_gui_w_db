@@ -95,18 +95,7 @@ class SideBar extends JPanel {
         btn_three.setBackground(new selectedColors().greenish);
         btn_four.setBackground(new selectedColors().greenish);
 
-        // Dimension minSize = new Dimension(2, 50);
-        // Dimension maxSize = new Dimension(Short.MAX_VALUE, 100);
-
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        // btn_one.setMaximumSize(new Dimension(Integer.MAX_VALUE,
-        // btn_one.getMinimumSize().height));
-        // btn_two.setMaximumSize(new Dimension(Integer.MAX_VALUE,
-        // btn_two.getMinimumSize().height));
-        // btn_three.setMaximumSize(new Dimension(Integer.MAX_VALUE,
-        // btn_three.getMinimumSize().height));
-        // btn_four.setMaximumSize(new Dimension(Integer.MAX_VALUE,
-        // btn_four.getMinimumSize().height));
         btn_one.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
         btn_two.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
         btn_three.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
