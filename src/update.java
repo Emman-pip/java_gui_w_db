@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,8 +8,11 @@ import java.util.LinkedList;
 
 public class update extends JFrame {
     JFrame frm;
+    JPanel pnl;
 
     update(JPanel dataGrid) {
+        pnl = new JPanel();
+        this.setBackground(new selectedColors().grayish);
         JLabel lbl_ID = new JLabel("ID:", JLabel.CENTER);
         JTextField txt_ID = new JTextField();
         JLabel lbl_name = new JLabel("name:", JLabel.CENTER);
@@ -50,21 +55,25 @@ public class update extends JFrame {
             }
         });
 
-        this.add(lbl_ID);
-        this.add(txt_ID);
-        this.add(lbl_name);
-        this.add(txt_name);
-        this.add(lbl_diagnosis);
-        this.add(txt_diagnosis);
-        this.add(lbl_prescription);
-        this.add(txt_prescription);
-        this.add(lbl_description);
-        this.add(txt_description);
-        this.add(btn_show);
-        this.add(btn_update);
+        JLabel[] lbl_list = { lbl_ID, lbl_name, lbl_diagnosis, lbl_prescription, lbl_description };
+        JTextField[] txt_list = { txt_ID, txt_name, txt_diagnosis, txt_prescription, txt_description };
 
-        this.setLayout(new GridLayout(6, 2));
+        for (int i = 0; i < lbl_list.length; i++) {
+            pnl.add(lbl_list[i]);
+            pnl.add(txt_list[i]);
 
+        }
+        pnl.add(btn_show);
+        pnl.add(btn_update);
+
+        pnl.setLayout(new GridLayout(6, 2));
+        pnl.setBorder(new EmptyBorder(0, 10, 10, 10));
+        pnl.setBackground(new selectedColors().grayish);
+
+        for (JLabel lbl : lbl_list) {
+            lbl.setForeground(Color.WHITE);
+        }
+        this.add(pnl);
         // this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("update records");
         this.setSize(400, 300);
