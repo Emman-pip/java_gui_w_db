@@ -72,10 +72,19 @@ class SideBar extends JPanel {
         // Dimension maxSize = new Dimension(Short.MAX_VALUE, 100);
 
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        btn_one.setMaximumSize(new Dimension(Integer.MAX_VALUE, btn_one.getMinimumSize().height));
-        btn_two.setMaximumSize(new Dimension(Integer.MAX_VALUE, btn_one.getMinimumSize().height));
-        btn_three.setMaximumSize(new Dimension(Integer.MAX_VALUE, btn_one.getMinimumSize().height));
-        btn_four.setMaximumSize(new Dimension(Integer.MAX_VALUE, btn_one.getMinimumSize().height));
+        // btn_one.setMaximumSize(new Dimension(Integer.MAX_VALUE,
+        // btn_one.getMinimumSize().height));
+        // btn_two.setMaximumSize(new Dimension(Integer.MAX_VALUE,
+        // btn_two.getMinimumSize().height));
+        // btn_three.setMaximumSize(new Dimension(Integer.MAX_VALUE,
+        // btn_three.getMinimumSize().height));
+        // btn_four.setMaximumSize(new Dimension(Integer.MAX_VALUE,
+        // btn_four.getMinimumSize().height));
+        btn_one.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+        btn_two.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+        btn_three.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+
+        btn_four.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
 
         btn_one.setAlignmentX(CENTER_ALIGNMENT);
         btn_two.setAlignmentX(CENTER_ALIGNMENT);
@@ -139,14 +148,15 @@ class Data extends JPanel {
             this.add(tbl);
             JScrollPane scroll = new JScrollPane(tbl);
             scroll.setViewportView(tbl);
+            // scroll.setPreferredSize(new Dimension(800, 400));
             scroll.setPreferredSize(new Dimension(800, 400));
+            scroll.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+            tbl.setPreferredScrollableViewportSize(scroll.getPreferredSize());
+            tbl.setFillsViewportHeight(true);
             // scroll.setSize(400, 300);
             tbl.setBackground(new selectedColors().grayish2);
-            // tbl.setForeground(Color.WHITE);
-            // scroll.setBackground(new selectedColors().grayish);
-            // scroll.getViewport().getView().setBackground(new selectedColors().grayish);
-
             this.add(scroll);
+
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
         }
@@ -166,7 +176,7 @@ public class main_file extends JFrame {
         this.add(BorderLayout.CENTER, data);
         this.add(BorderLayout.WEST, new SideBar(data));
         this.setSize(1020, 480);
-        // this.pack();
+        this.setTitle("Medical DB");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
     }
