@@ -10,6 +10,7 @@ public class delete extends JInternalFrame {
     JInternalFrame frm = this;
 
     delete(JPanel dataGrid) {
+        this.setResizable(true);
         this.setClosable(true);
         JPanel pnl = new JPanel();
         pnl.setBackground(new selectedColors().grayish);

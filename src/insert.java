@@ -94,6 +94,7 @@ public class insert extends JInternalFrame {
 
     insert(JPanel dataGrid) {
         this.setClosable(true);
+        this.setResizable(true);
         this.setTitle("add records");
         ;
         this.setSize(300, 300);

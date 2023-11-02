@@ -87,7 +87,7 @@ class SideBar extends JPanel {
         btn_four.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                frm.add(new refresh(data), BorderLayout.EAST);
+                new refresh(data);
             }
         });
 

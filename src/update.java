@@ -11,6 +11,7 @@ public class update extends JInternalFrame {
     JPanel pnl;
 
     update(JPanel dataGrid) {
+        this.setResizable(true);
         this.setClosable(true);
         pnl = new JPanel();
         this.setBackground(new selectedColors().grayish);
