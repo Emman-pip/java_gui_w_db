@@ -11,7 +11,7 @@ import java.util.*;
 class selectedColors {
     Color grayish = new Color(58, 58, 58);
     Color grayish2 = new Color(210, 210, 210);
-
+    Color grayish3 = new Color(80, 80, 80);
     Color greenish = new Color(0, 200, 150);
 }
 
@@ -172,7 +172,10 @@ class Data extends JPanel {
             tbl = new JTable(strArr, columnNames);
             // tbl.setBounds(30, 40, 700, 300);
             // this.setLayout(null);
+            tbl.getTableHeader().setBackground(new selectedColors().grayish);
+            tbl.getTableHeader().setForeground(Color.WHITE);
             this.add(tbl);
+
             JScrollPane scroll = new JScrollPane(tbl);
             scroll.setViewportView(tbl);
             // scroll.setPreferredSize(new Dimension(800, 400));
@@ -181,7 +184,8 @@ class Data extends JPanel {
             tbl.setPreferredScrollableViewportSize(scroll.getPreferredSize());
             tbl.setFillsViewportHeight(true);
             // scroll.setSize(400, 300);
-            tbl.setBackground(new selectedColors().grayish2);
+            tbl.setBackground(new selectedColors().grayish3);
+            tbl.setForeground(Color.WHITE);
             this.setLayout(new BorderLayout());
             this.add(scroll, BorderLayout.CENTER);
 
@@ -214,7 +218,7 @@ public class main_file extends JFrame {
     main_file() {
         JMenuBar menu = new Menu();
         this.setLayout(new BorderLayout());
-        // this.add(BorderLayout.NORTH, menu);
+        this.add(BorderLayout.NORTH, menu);
         // this.add(BorderLayout.CENTER, data);
         // this.add(BorderLayout.WEST, new SideBar(data));
         this.add(new tabbedPane(), BorderLayout.CENTER);
