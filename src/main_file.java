@@ -1,8 +1,19 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.util.*;
+
+class selectedColors {
+    Color grayish = new Color(58, 58, 58);
+    Color grayish2 = new Color(210, 210, 210);
+
+    Color greenish = new Color(0, 200, 150);
+}
 
 class Menu extends JMenuBar {
     JMenuBar mb;
@@ -26,39 +37,101 @@ class Menu extends JMenuBar {
 
 class SideBar extends JPanel {
     JPanel pnl;
+    Image addImage;
+    Image removeImage;
+    Image updateImage;
+    Image refreshImage;
 
-    SideBar(JPanel data) {
-        JButton btn_one = new JButton("Add record");
+    SideBar(JPanel data, JFrame frm) {
+
+        JButton btn_one = new JButton();
+        JButton btn_two = new JButton();
+        JButton btn_three = new JButton();
+        JButton btn_four = new JButton();
+
+        try {
+            addImage = ImageIO.read(getClass().getResource(
+                    "media/add-circle-svgrepo-com.png"));
+            // Image one = ;
+            removeImage = ImageIO.read(getClass().getResource(
+                    "media/minus-circle-svgrepo-com.png"));
+            updateImage = ImageIO.read(getClass()
+                    .getResource("media/edit-svgrepo-com.png"));
+            refreshImage = ImageIO.read(getClass()
+                    .getResource("media/refresh-svgrepo-com.png"));
+            JButton[] buttons = { btn_one, btn_two, btn_three, btn_four };
+            Image[] images = { addImage, removeImage, updateImage, refreshImage };
+            for (int i = 0; i < buttons.length; i++) {
+                buttons[i].setIcon(new ImageIcon(getScaledImage(images[i], 70, 70)));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         btn_one.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new insert(data);
+                frm.add(new insert(data), BorderLayout.EAST);
             }
         });
-        JButton btn_two = new JButton("Delete record");
         btn_two.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new delete(data);
+                frm.add(new delete(data), BorderLayout.EAST);
+
             }
         });
-        JButton btn_three = new JButton("Update record");
         btn_three.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new update(data);
+                frm.add(new update(data), BorderLayout.EAST);
             }
         });
 
-        JButton btn_four = new JButton("refresh");
         btn_four.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 new refresh(data);
             }
         });
-        this.setLayout(new GridLayout(4, 1, 1, 1));
+
+        btn_one.setBackground(new selectedColors().greenish);
+        btn_two.setBackground(new selectedColors().greenish);
+        btn_three.setBackground(new selectedColors().greenish);
+        btn_four.setBackground(new selectedColors().greenish);
+
+        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        btn_one.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+        btn_two.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+        btn_three.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+
+        btn_four.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+
+        btn_one.setAlignmentX(CENTER_ALIGNMENT);
+        btn_two.setAlignmentX(CENTER_ALIGNMENT);
+        btn_three.setAlignmentX(CENTER_ALIGNMENT);
+        btn_four.setAlignmentX(CENTER_ALIGNMENT);
+
+        Dimension prefSize = new Dimension(2, 10);
+        this.setBorder(new EmptyBorder(10, 10, 10, 10));
+        this.setBackground(new selectedColors().grayish);
+
         this.add(btn_one);
+        this.add(new Box.Filler(prefSize, prefSize, prefSize));
         this.add(btn_two);
+        this.add(new Box.Filler(prefSize, prefSize, prefSize));
+
         this.add(btn_three);
+        this.add(new Box.Filler(prefSize, prefSize, prefSize));
+
         this.add(btn_four);
+    }
+
+    private Image getScaledImage(Image srcImg, int w, int h) {
+        BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = resizedImg.createGraphics();
+
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2.drawImage(srcImg, 0, 0, w, h, null);
+        g2.dispose();
+
+        return resizedImg;
     }
 }
 
@@ -103,12 +176,20 @@ class Data extends JPanel {
             this.add(tbl);
             JScrollPane scroll = new JScrollPane(tbl);
             scroll.setViewportView(tbl);
+            // scroll.setPreferredSize(new Dimension(800, 400));
             scroll.setPreferredSize(new Dimension(800, 400));
+            scroll.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+            tbl.setPreferredScrollableViewportSize(scroll.getPreferredSize());
+            tbl.setFillsViewportHeight(true);
             // scroll.setSize(400, 300);
-            this.add(scroll);
+            tbl.setBackground(new selectedColors().grayish2);
+            this.setLayout(new BorderLayout());
+            this.add(scroll, BorderLayout.CENTER);
+
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
         }
+        this.setBackground(new selectedColors().grayish);
     }
 }
 
@@ -122,14 +203,17 @@ public class main_file extends JFrame {
         this.add(BorderLayout.NORTH, menu);
         data = new Data();
         this.add(BorderLayout.CENTER, data);
-        this.add(BorderLayout.WEST, new SideBar(data));
+        this.add(BorderLayout.WEST, new SideBar(data, this));
         this.setSize(1020, 480);
-        // this.pack();
+        this.setTitle("Medical DB");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        // GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0].setFullScreenWindow(null);
+        ;
         this.setVisible(true);
     }
 
     public static void main(String[] args) {
         new main_file();
+
     }
 }

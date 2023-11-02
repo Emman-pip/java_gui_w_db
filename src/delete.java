@@ -5,21 +5,27 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class delete extends JFrame {
+public class delete extends JInternalFrame {
     DB data;
-    JFrame frm = this;
+    JInternalFrame frm = this;
 
     delete(JPanel dataGrid) {
+        this.setResizable(true);
+        this.setClosable(true);
         JPanel pnl = new JPanel();
+        pnl.setBackground(new selectedColors().grayish);
         JPanel pnl_buttons = new JPanel();
 
         JLabel lbl_deleteID = new JLabel("Delete record with ID#:");
+        lbl_deleteID.setForeground(Color.WHITE);
         JTextField txt_IDNum = new JTextField();
         txt_IDNum.setColumns(20);
         // txt_IDNum.setSize(10,10);
 
         JButton btn_del = new JButton("Delete");
+        btn_del.setBackground(new selectedColors().greenish);
         JButton btn_close = new JButton("Close");
+        btn_close.setBackground(new selectedColors().greenish);
 
         btn_del.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
