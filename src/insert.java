@@ -69,9 +69,9 @@ class widgets extends JPanel {
         });
 
         // JButton btn_close = new CloseBtn();
-        btn_close = new JButton("Close");
-        btn_close.setBackground(new selectedColors().greenish);
-        pnl_buttons.add(btn_close);
+        // btn_close = new JButton("Close");
+        // btn_close.setBackground(new selectedColors().greenish);
+        // pnl_buttons.add(btn_close);
         pnl_buttons.add(btn_add);
         this.add(pnl_entries);
         this.add(pnl_buttons);
@@ -89,25 +89,17 @@ class widgets extends JPanel {
     }
 }
 
-public class insert extends JFrame {
-    JFrame frm = this;
+public class insert extends JPanel {
+    JPanel frm = this;
 
     insert(JPanel dataGrid) {
-        this.setTitle("add records");
+        // this.setTitle("add records");
         ;
         this.setSize(300, 300);
 
         widgets items = new widgets(dataGrid);
-        items.btn_close.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                frm.dispose();
-            }
-        });
+        this.setLayout(new BorderLayout());
         this.add(items);
-        // this.add(pnl);
-        // this.add();
-        this.pack();
-        // this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
     }
 

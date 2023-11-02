@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
 
-public class update extends JFrame {
+public class update extends JPanel {
     JFrame frm;
     JPanel pnl;
 
@@ -75,7 +75,7 @@ public class update extends JFrame {
         }
         this.add(pnl);
         // this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setTitle("update records");
+        // this.setTitle("update records");
         this.setSize(400, 300);
         this.setVisible(true);
     }

@@ -192,6 +192,20 @@ class Data extends JPanel {
     }
 }
 
+class tabbedPane extends JTabbedPane {
+    tabbedPane() {
+        JPanel data = new Data();
+        this.add("Records", data);
+        insert i = new insert(data);
+        this.add("Add", i);
+        delete del = new delete(data);
+        this.add("Delete Records", del);
+        update u = new update(data);
+        this.add("Update", u);
+
+    }
+}
+
 public class main_file extends JFrame {
     JFrame frm;
     JPanel data;
@@ -199,11 +213,12 @@ public class main_file extends JFrame {
     main_file() {
         JMenuBar menu = new Menu();
         this.setLayout(new BorderLayout());
-        this.add(BorderLayout.NORTH, menu);
-        data = new Data();
-        this.add(BorderLayout.CENTER, data);
-        this.add(BorderLayout.WEST, new SideBar(data));
-        this.setSize(1020, 480);
+        // this.add(BorderLayout.NORTH, menu);
+        // this.add(BorderLayout.CENTER, data);
+        // this.add(BorderLayout.WEST, new SideBar(data));
+        this.add(new tabbedPane(), BorderLayout.CENTER);
+
+        this.setSize(500, 480);
         this.setTitle("Medical DB");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         // GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0].setFullScreenWindow(null);
