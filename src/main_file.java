@@ -206,8 +206,8 @@ class tabbedPane extends JTabbedPane {
         this.add("Delete Records", del);
         update u = new update(data);
         this.add("Update", u);
-        this.setBackground(new selectedColors().grayish);
-        this.setForeground(Color.WHITE);
+        this.setBackground(new selectedColors().greenish);
+        // this.setForeground(Color.WHITE);
     }
 }
 
@@ -227,7 +227,8 @@ public class main_file extends JFrame {
         this.setTitle("Medical DB");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         // GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0].setFullScreenWindow(null);
-        ;
+        // this.setBackground(Color.WHITE);
+
         this.setVisible(true);
     }
 
