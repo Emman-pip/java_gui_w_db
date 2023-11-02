@@ -42,6 +42,8 @@ public class update extends JPanel {
         });
 
         JButton btn_update = new JButton("update");
+        btn_show.setBackground(new selectedColors().greenish);
+        btn_update.setBackground(new selectedColors().greenish);
 
         btn_update.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -73,6 +75,7 @@ public class update extends JPanel {
         for (JLabel lbl : lbl_list) {
             lbl.setForeground(Color.WHITE);
         }
+        this.setLayout(new BorderLayout());
         this.add(pnl);
         // this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         // this.setTitle("update records");

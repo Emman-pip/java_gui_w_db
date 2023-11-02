@@ -36,23 +36,11 @@ public class delete extends JPanel {
                 }
             }
         });
-
-        // btn_close.addActionListener(new ActionListener() {
-        // public void actionPerformed(ActionEvent e) {
-        // frm.dispose();
-        // ;
-        // }
-        // });
-        // this.add(lbl_deleteID);
-        // this.add(txt_IDNum);
-        // this.setTitle("delete records");
-        this.setSize(350, 150);
+        // this.setSize(350, 150);
         // this.pack();
         this.setLayout(new BorderLayout());
         pnl_buttons.setLayout(new BorderLayout());
-
-        this.add(pnl, BorderLayout.CENTER);
-        this.add(pnl_buttons, BorderLayout.SOUTH);
+        // pnl.setLayout(new Borde);
 
         pnl.setBorder(new EmptyBorder(10, 10, 10, 10));
         // pnl.setLayout(new BorderLayout());
@@ -60,6 +48,8 @@ public class delete extends JPanel {
         // pnl.add(txt_IDNum, BorderLayout.CENTER);
         pnl.add(lbl_deleteID);
         pnl.add(txt_IDNum);
+        pnl.add(pnl_buttons);
+        this.add(pnl);
         pnl_buttons.add(btn_del, BorderLayout.CENTER);
         // pnl_buttons.add(btn_close, BorderLayout.SOUTH);
 
