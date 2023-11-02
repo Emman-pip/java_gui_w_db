@@ -1,9 +1,11 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.util.*;
 
 class selectedColors {
@@ -35,34 +37,59 @@ class Menu extends JMenuBar {
 
 class SideBar extends JPanel {
     JPanel pnl;
+    Image addImage;
+    Image removeImage;
+    Image updateImage;
+    Image refreshImage;
 
     SideBar(JPanel data) {
-        JButton btn_one = new JButton("Add record");
+
+        JButton btn_one = new JButton();
+        JButton btn_two = new JButton();
+        JButton btn_three = new JButton();
+        JButton btn_four = new JButton();
+
+        try {
+            addImage = ImageIO.read(getClass().getResource(
+                    "media/add-circle-svgrepo-com.png"));
+            // Image one = ;
+            removeImage = ImageIO.read(getClass().getResource(
+                    "media/minus-circle-svgrepo-com.png"));
+            updateImage = ImageIO.read(getClass()
+                    .getResource("media/edit-svgrepo-com.png"));
+            refreshImage = ImageIO.read(getClass()
+                    .getResource("media/refresh-svgrepo-com.png"));
+            JButton[] buttons = { btn_one, btn_two, btn_three, btn_four };
+            Image[] images = { addImage, removeImage, updateImage, refreshImage };
+            for (int i = 0; i < buttons.length; i++) {
+                buttons[i].setIcon(new ImageIcon(getScaledImage(images[i], 70, 70)));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         btn_one.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new insert(data);
             }
         });
-        JButton btn_two = new JButton("Delete record");
         btn_two.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new delete(data);
             }
         });
-        JButton btn_three = new JButton("Update record");
         btn_three.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new update(data);
             }
         });
 
-        JButton btn_four = new JButton("refresh");
         btn_four.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 new refresh(data);
             }
         });
+
         btn_one.setBackground(new selectedColors().greenish);
         btn_two.setBackground(new selectedColors().greenish);
         btn_three.setBackground(new selectedColors().greenish);
@@ -104,6 +131,17 @@ class SideBar extends JPanel {
         this.add(new Box.Filler(prefSize, prefSize, prefSize));
 
         this.add(btn_four);
+    }
+
+    private Image getScaledImage(Image srcImg, int w, int h) {
+        BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = resizedImg.createGraphics();
+
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2.drawImage(srcImg, 0, 0, w, h, null);
+        g2.dispose();
+
+        return resizedImg;
     }
 }
 
@@ -183,5 +221,6 @@ public class main_file extends JFrame {
 
     public static void main(String[] args) {
         new main_file();
+
     }
 }
